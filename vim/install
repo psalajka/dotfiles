@@ -1,2 +1,0 @@
-ln -fs $PWD/vimrc ~/.vimrc
-ln -fs $PWD/gvimrc ~/.gvimrc
