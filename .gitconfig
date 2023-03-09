@@ -1,0 +1,6 @@
+[user]
+	email = petr.salajka@gmail.com
+	name = Petr Salajka
+[core]
+	editor = vim
+	excludesFile = ~/.gitignore_global
