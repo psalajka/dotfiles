@@ -126,7 +126,9 @@ fi
 # allow $USER to use keys. Only enter once and it will remain enabled till
 # you delete it or reboot the server 
 ###########################################################################
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+if [ -e /usr/bin/keychain ] ; then
+    /usr/bin/keychain $HOME/.ssh/id_rsa
+    source $HOME/.keychain/$HOSTNAME-sh
+fi
 
 set -o vi
