@@ -12,6 +12,7 @@ git fetch
 
 Pull all files from remote repository, but prevent overwriting of any local file.
 ```bash
+test -f .gitconfig || curl https://raw.githubusercontent.com/psalajka/dotfiles/master/.gitconfig -o .gitconfig
 for FILENAME in $(git diff --name-only origin/master) ; do git add -f $FILENAME ; done
 git commit -m "WIP"
 git rebase -Xtheirs origin/master
