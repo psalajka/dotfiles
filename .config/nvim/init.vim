@@ -1,0 +1,1 @@
+/mnt/c/Users/petrs/AppData/Local/nvim/init.vim
