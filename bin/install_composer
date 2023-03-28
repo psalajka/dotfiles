@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Composer Installer
+# ------------------
+# Options
+# --help               this help
+# --check              for checking environment only
+# --force              forces the installation
+# --ansi               force ANSI color output
+# --no-ansi            disable ANSI color output
+# --quiet              do not output unimportant messages
+# --install-dir="..."  accepts a target installation directory
+# --preview            install the latest version from the preview (alpha/beta/rc) channel instead of stable
+# --snapshot           install the latest version from the snapshot (dev builds) channel instead of stable
+# --1                  install the latest stable Composer 1.x (EOL) version
+# --2                  install the latest stable Composer 2.x version
+# --2.2                install the latest stable Composer 2.2.x (LTS) version
+# --version="..."      accepts a specific version to install instead of the latest
+# --filename="..."     accepts a target filename (default: composer.phar)
+# --disable-tls        disable SSL/TLS security for file downloads
+# --cafile="..."       accepts a path to a Certificate Authority (CA) certificate file for SSL/TLS verification
+
+EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+then
+    >&2 echo 'ERROR: Invalid installer checksum'
+    rm composer-setup.php
+    exit 1
+fi
+
+php composer-setup.php --install-dir="$HOME/.local/bin" --filename="composer"
+RESULT=$?
+rm composer-setup.php
+exit $RESULT
