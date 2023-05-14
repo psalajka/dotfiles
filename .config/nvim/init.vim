@@ -33,3 +33,7 @@ set relativenumber
 set cursorline
 
 nnoremap <F12> :nohlsearch<Enter>
+
+set textwidth=119
+set colorcolumn=120
+set formatoptions-=t
