@@ -15,6 +15,9 @@ Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
 " A tree explorer plugin for vim.
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 
+" Comment stuff out.
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 nmap <Tab> :tabnext<Enter>
