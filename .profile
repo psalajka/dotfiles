@@ -35,3 +35,13 @@ fi
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+if [ ! -f ~/.tmux-completion.bash ]; then
+    echo "Downloading 'tmux-completion.bash'..."
+    curl https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux \
+        -o ~/.tmux-completion.bash
+fi
+
+if [ -f ~/.tmux-completion.bash ]; then
+    . ~/.tmux-completion.bash
+fi
